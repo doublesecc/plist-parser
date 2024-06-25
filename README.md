@@ -18,6 +18,7 @@ However, you can also utilise some LOLbins tell you.
 You can use `file` to check.
 ```zsh
 $ file Info.plist
+
 Info.plist: Apple binary property list
 ```
 > **Note:**
@@ -27,6 +28,7 @@ Info.plist: Apple binary property list
 You can view the magic bytes of the file.
 ``` zsh
 $ cat Info.plist
+
 bplist00
 
 
@@ -44,11 +46,12 @@ bplist00
 python3 /opt/github/plist-parser/plist_parser.py -f <Info.plist>
 ```
 
-### Example Output
+## Example Output
 This example output is from the IPA [DVIA-v2](https://github.com/prateek147/DVIA-v2).
 
 ``` zsh
 $ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist
+
 {
     "BuildMachineOSBuild": "17D47",
     "CFBundleDevelopmentRegion": "en",
@@ -164,26 +167,30 @@ $ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist
     ]
 }
 ```
-
+## Combining With Other Tools
 You can now combine this JSON output with other tooling to extract information of interest.
 
-Some examaples:
+> **Note:**
+> Below are some very limited examples to extract data of interest, you can do much more than demonstrated!
 
 Combine with jq to check the Minimum Supported OS Version:
 ``` zsh
 $ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist | jq -r '.MinimumOSVersion'
+
 10.0
 ```
 
 Combine with grep and cut to check the Minimum Supported OS Version:
 ``` zsh
 $ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist | grep '"MinimumOSVersion"' | cut -f 4 -d '"'
+
 10.0
 ```
 
 Combine with jq to check if anything is declared in NSAppTransportSecurity:
 ``` zsh
 $ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist | jq -r '.NSAppTransportSecurity'
+
 {
   "NSAllowsArbitraryLoads": true
 }
