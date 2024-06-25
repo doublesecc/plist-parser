@@ -1,7 +1,7 @@
 # plist-parser
 
 ## Overview
-`plist parser` is a python script to parse Info.plist files and convert them into JSON.
+`plist parser` is a python script to parse Info.plist files, convert them into JSON format and print to stdout.
 
 Info.plist files can be found in two formats:
 - XML
@@ -41,14 +41,14 @@ bplist00
 
 # Usage
 ``` zsh
-python3 ./plist_parser -f <Info.plist>
+python3 /opt/github/plist-parser/plist_parser.py -f <Info.plist>
 ```
 
 ### Example Output
 This example output is from the IPA [DVIA-v2](https://github.com/prateek147/DVIA-v2).
 
 ``` zsh
-$ python3 ./plist_parser.py -f Info.plist
+$ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist
 {
     "BuildMachineOSBuild": "17D47",
     "CFBundleDevelopmentRegion": "en",
@@ -171,19 +171,19 @@ Some examaples:
 
 Combine with jq to check the Minimum Supported OS Version:
 ``` zsh
-$ python3 ./plist_parser.py -f Info.plist | jq -r '.MinimumOSVersion'
+$ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist | jq -r '.MinimumOSVersion'
 10.0
 ```
 
 Combine with grep and cut to check the Minimum Supported OS Version:
 ``` zsh
-$ python3 ./plist_parser.py -f Info.plist | grep '"MinimumOSVersion"' | cut -f 4 -d '"'
+$ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist | grep '"MinimumOSVersion"' | cut -f 4 -d '"'
 10.0
 ```
 
 Combine with jq to check if anything is declared in NSAppTransportSecurity:
 ``` zsh
-$ python3 ./plist_parser.py -f Info.plist | jq -r '.NSAppTransportSecurity'
+$ python3 /opt/github/plist-parser/plist_parser.py -f Info.plist | jq -r '.NSAppTransportSecurity'
 {
   "NSAllowsArbitraryLoads": true
 }
