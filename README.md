@@ -1,2 +1,8 @@
 # plist-parser
-Parse plist files and convert to JSON
+Python script to parse Info.plist files and convert to JSON.
+
+# Usage
+``` python3
+python3 ./plist_parser -f <Info.plist>
+```
+
